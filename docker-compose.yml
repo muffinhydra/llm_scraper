@@ -1,0 +1,51 @@
+version: "3"
+services:
+    scraper:
+        build:
+            context: ./scraper
+        ports:
+            - 20010:20010
+        depends_on:
+            - kafka
+
+    etl_worker:
+        build: ./etl_worker
+        ports:
+            - 20020:20020
+
+    llm_worker:
+        build: ./llm_worker
+        ports:
+            - 20030:20030
+
+    kafka:
+        build:
+            context: ./kafka
+            dockerfile: Dockerfile
+        ports:
+            - 9092:9092
+        environment:
+            KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+            KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
+            KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+            KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+        depends_on:
+            - zookeeper
+
+    zookeeper:
+        build:
+            context: ./zookeeper
+            dockerfile: Dockerfile
+        ports:
+            - 2181:2181
+            - 2888:2888
+            - 3888:3888
+
+    postgres:
+        image: postgres:13
+        ports:
+            - 5432:5432
+        environment:
+            POSTGRES_USER: your_username
+            POSTGRES_PASSWORD: your_password
+            POSTGRES_DB: your_database

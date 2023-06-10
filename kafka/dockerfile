@@ -1,0 +1,10 @@
+FROM confluentinc/cp-kafka:6.2.0
+
+# Copy custom configurations
+COPY server.properties /etc/kafka/server.properties
+
+# Expose Kafka port
+EXPOSE 9092
+
+# Start Kafka server
+CMD ["kafka-server-start", "/etc/kafka/server.properties"]
