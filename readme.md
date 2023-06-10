@@ -19,7 +19,7 @@ The project consists of the following components:
 1. Clone the repository:
 
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/muffinhydra/llm_scraper.git
 
 2. Set up the environment:
 
