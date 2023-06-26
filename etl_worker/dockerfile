@@ -18,6 +18,7 @@ EXPOSE 20030
 # Set the environment variables
 ENV FLASK_APP=app.py
 ENV FLASK_RUN_HOST=0.0.0.0
+ENV FLASK_RUN_PORT=20030
 
 # Start the Flask application
 CMD ["flask", "run"]

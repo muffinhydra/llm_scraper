@@ -12,10 +12,16 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the LLM Worker files to the working directory
 COPY app.py .
-COPY llm.py .
+COPY llm_external.py .
 
 # Expose the required port
 EXPOSE 20020
+
+# Set the environment variables
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
+ENV FLASK_RUN_PORT=20020
+
 
 # Start the Flask application
 CMD ["flask", "run"]
