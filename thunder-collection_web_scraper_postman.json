@@ -1,0 +1,295 @@
+{
+    "info": {
+        "_postman_id": "eb2f6073-d72d-4bee-9abf-000c25c2a39a",
+        "name": "web_scraper",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": ""
+    },
+    "item": [
+        {
+            "name": "status",
+            "item": [
+                {
+                    "name": "Get Scraper Status",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:20010/status",
+                            "path": [
+                                "status"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "20010"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "*/*",
+                                "disabled": true
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Get ETL Status",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:20030/status",
+                            "path": [
+                                "status"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "20030"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "*/*",
+                                "disabled": true
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Get LLM Status",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:20020/status",
+                            "path": [
+                                "status"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "20020"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "*/*",
+                                "disabled": true
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "execute",
+            "item": [
+                {
+                    "name": "post URLs to Scrape",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:20010/start",
+                            "path": [
+                                "start"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "20010"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "*/*",
+                                "disabled": true
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n  \"web_pages\":[\"https://www.amazon.de/-/en/gp/bestsellers/amazon-devices/ref=zg_bs_nav_0\",\"https://www.amazon.de/-/en/gp/bestsellers/boost/ref=zg_bs_nav_0\",\"https://www.amazon.de/-/en/gp/bestsellers/mobile-apps/ref=zg_bs_nav_0\",\"https://www.amazon.de/-/en/gp/bestsellers/automotive/ref=zg_bs_nav_0\",\"https://www.amazon.de/-/en/gp/bestsellers/beauty/ref=zg_bs_nav_0\",\"https://www.amazon.de/-/en/gp/bestsellers/books/ref=zg_bs_nav_0\",\"https://www.amazon.de/-/en/gp/bestsellers/industrial/ref=zg_bs_nav_0\"]\n}"
+                        }
+                    }
+                },
+                {
+                    "name": "start up LLM",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:20020/start",
+                            "path": [
+                                "start"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "20020"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "*/*",
+                                "disabled": true
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "start up ETL",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:20030/start",
+                            "path": [
+                                "start"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "20030"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "*/*",
+                                "disabled": true
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "stop_services",
+            "item": [
+                {
+                    "name": "stop Scrape",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:20010/stop",
+                            "path": [
+                                "stop"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "20010"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "*/*",
+                                "disabled": true
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "stop LLM",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:20020/stop",
+                            "path": [
+                                "stop"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "20020"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "*/*",
+                                "disabled": true
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "stop ETL",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:20030/stop",
+                            "path": [
+                                "stop"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "20030"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "*/*",
+                                "disabled": true
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}
