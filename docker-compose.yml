@@ -64,7 +64,7 @@ services:
         ports:
             - 20020:20020
         env_file:
-            - /llm_worker/.env
+            - ./.env
 
     etl_worker:
         build: ./etl_worker
@@ -77,5 +77,5 @@ services:
             - 5432:5432
         environment:
             POSTGRES_USER: scraper_etl
-            POSTGRES_PASSWORD: waldfee
             POSTGRES_DB: scraper_db
+            POSTGRES_PASSWORD: waldfee

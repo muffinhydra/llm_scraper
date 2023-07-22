@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the LLM Worker files to the working directory
 COPY app.py .
 COPY llm_external.py .
-
+COPY llm_scripts.py .
 # Expose the required port
 EXPOSE 20020
 

@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "eb2f6073-d72d-4bee-9abf-000c25c2a39a",
+        "_postman_id": "88bdb0ed-28f0-4c14-a4a9-b4b9779cec90",
         "name": "web_scraper",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -23,35 +23,6 @@
                                 "localhost"
                             ],
                             "port": "20010"
-                        },
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "*/*",
-                                "disabled": true
-                            },
-                            {
-                                "key": "User-Agent",
-                                "value": "Thunder Client (https://www.thunderclient.com)",
-                                "disabled": true
-                            }
-                        ]
-                    }
-                },
-                {
-                    "name": "Get ETL Status",
-                    "request": {
-                        "method": "GET",
-                        "url": {
-                            "raw": "http://localhost:20030/status",
-                            "path": [
-                                "status"
-                            ],
-                            "protocol": "http",
-                            "host": [
-                                "localhost"
-                            ],
-                            "port": "20030"
                         },
                         "header": [
                             {
@@ -95,6 +66,35 @@
                             }
                         ]
                     }
+                },
+                {
+                    "name": "Get ETL Status",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:20030/status",
+                            "path": [
+                                "status"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "20030"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "*/*",
+                                "disabled": true
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ]
+                    }
                 }
             ]
         },
@@ -102,7 +102,7 @@
             "name": "execute",
             "item": [
                 {
-                    "name": "post URLs to Scrape",
+                    "name": "extract Ebay",
                     "request": {
                         "method": "POST",
                         "url": {
@@ -135,7 +135,7 @@
                                     "language": "json"
                                 }
                             },
-                            "raw": "{\n  \"web_pages\":[\"https://www.amazon.de/-/en/gp/bestsellers/amazon-devices/ref=zg_bs_nav_0\",\"https://www.amazon.de/-/en/gp/bestsellers/boost/ref=zg_bs_nav_0\",\"https://www.amazon.de/-/en/gp/bestsellers/mobile-apps/ref=zg_bs_nav_0\",\"https://www.amazon.de/-/en/gp/bestsellers/automotive/ref=zg_bs_nav_0\",\"https://www.amazon.de/-/en/gp/bestsellers/beauty/ref=zg_bs_nav_0\",\"https://www.amazon.de/-/en/gp/bestsellers/books/ref=zg_bs_nav_0\",\"https://www.amazon.de/-/en/gp/bestsellers/industrial/ref=zg_bs_nav_0\"]\n}"
+                            "raw": "{\n    \"web_pages\": [\n        \"https://www.ebay.de/t/K%C3%BCchen-Kleinger%C3%A4te/20667/bn_1845071/tr\"\n    ],\n    \"data_dictionary\": {\n        \"name\": \"string\",\n        \"price\": \"float\",\n        \"rating\": \"float\",\n        \"reviews\": \"integer\",\n        \"rank\": \"integer\"\n    },\n    \"insights\": \"products\"\n}\n"
                         }
                     }
                 },
@@ -195,6 +195,44 @@
                                 "disabled": true
                             }
                         ]
+                    }
+                },
+                {
+                    "name": "extract Reddit",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "http://localhost:20010/start",
+                            "path": [
+                                "start"
+                            ],
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "20010"
+                        },
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "*/*",
+                                "disabled": true
+                            },
+                            {
+                                "key": "User-Agent",
+                                "value": "Thunder Client (https://www.thunderclient.com)",
+                                "disabled": true
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            },
+                            "raw": "{\n    \"web_pages\": [\n        \"https://www.reddit.com/hot/\"\n    ],\n    \"data_dictionary\": {\n        \"date\": \"string\",\n        \"title\": \"string\",\n        \"hyper-link\": \"string; hyperlink correspoding to the title\"\n    },\n    \"insights\": \"posts\"\n}\n"
+                        }
                     }
                 }
             ]
